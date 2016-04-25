@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CrystalsCollector</title>
+    <title>CrystalGemsCollector</title>
 
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
     <!-- Added link to the jQuery Library -->
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
@@ -16,29 +17,43 @@
 
 <iframe width="0" height="0" src="https://www.youtube.com/embed/94yYC-SFCzs?rel=0&amp&autoplay=1;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
+<h1>Welcome to CrystalGemsCollector!</h1>
+<br>
+<p>You will be given a random number at the start of the game.</p>
+<br>
+<p>There are three crystal gems below and Steven. By clicking on one of them, you will add a specific amount of points to your total score.</p>
+<br>
+<p>You win the game by matching your total score to the random number and you lose the game if your score goes above the random number.</p>
+<br>
+<p>The value of each crystal is hidden from you until you click on each one.</p>
+<br>
+<p>Each time the game starts, the values of each character will change.</p>
+<br>
+<p>Good luck!</p>
+<br>
 <div class="container">
-
-    <div class="row">
+<!-- 
+    <div class="row"> -->
 
         <!-- Calculator Panel -->
-        <div class="col-lg-4">
+<!--         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Calculator</h3>
                 </div>
 
                 <div class="panel-body">
-                            <button id="crystal1" class="btn btn-primary number" value=1><h1>1</h1></button>
+                            <button id="crystal1"><h1>1</h1></button>
                             <button id="crystal2" class="btn btn-primary number" value=2><h1>2</h1></button>
                             <button id="crystal3" class="btn btn-primary number" value=3><h1>3</h1></button>
                             <button id="crystal4" class="btn btn-danger operator" value=plus><h1>+</h1></button>
                             <br><br>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Result Panel -->
-        <div class="col-lg-6">
+<!--         <div class="col-lg-6">
         <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Result</h3>
@@ -53,147 +68,11 @@
             </div>    
         </div>
     </div>
-</div>
+</div> -->
 
-<script type="text/javascript">
-
-$(document).ready(function(){
-
-    var calculationDiv = $('#calculation');
-
-    var firstNumber = "";
-    var secondNumber = "";
-    var operator = "";
-    var result = 0;
-    var hasNumber = false;
-    var firstNumberComplete = false;
-    var lockButtons = false;
-
-    // Check if any button is clicked...
-    $('button').on("click", function() {
-
-        // Checks if it's a number
-        if ($(this).hasClass("number") && !lockButtons){
-
-            hasNumber = true;
-
-            // If we haven't received an operator yet
-            if (firstNumberComplete == false){
-
-                // Grab the number of the value clicked then builds a string with it
-                firstNumber = firstNumber + $(this).attr("value") ;
-
-                // Print the number to the firstPage
-                console.log(firstNumber); 
-
-                // Print it to the div
-                $("#firstNumber").html(firstNumber);
-            }
-
-            // If we have received an operator
-            if (firstNumberComplete == true){
-
-                // Grab the number of the value clicked then builds a string with it
-                secondNumber = secondNumber + $(this).attr("value") ;
-
-                // Print the number to the firstPage
-                console.log(secondNumber); 
-
-                // Print it to the div
-                $("#secondNumber").html(secondNumber);
-            }
-
-        }
-
-        // Checks if its an operator (but not =)
-        if ($(this).hasClass("operator") && hasNumber && !lockButtons){
-            firstNumberComplete = true;
-
-            // Converts words into symbols
-            if($(this).attr("value") == "plus"){
-                $("#operator").html("<button>+</button>");
-                operator = "plus";
-            }
-
-            // Converts words into symbols
-            if($(this).attr("value") == "minus"){
-                $("#operator").html("<button>-</button>");
-                operator = "minus";
-            }
-
-            // Converts words into symbols
-            if($(this).attr("value") == "times"){
-                $("#operator").html("<button>*</button>");
-                operator = "times";
-            }
-
-            // Converts words into symbols
-            if($(this).attr("value") == "divide"){
-                $("#operator").html("<button>/</button>");
-                operator = "divide";
-            }
-
-            // Converts words into symbols
-            if($(this).attr("value") == "power"){
-                $("#operator").html("<button>^</button>");
-                operator = "power";
-            }
-        }
-
-        // Checks if the equal button has been pressed. If so...
-        if($(this).hasClass("equal")){
-
-            // Lock the keyboard from being clicked
-            lockButtons = true;
+<script type="text/javascript" src="game.js"></script>
 
 
-            // Then figure out which operator was clicked and perform the necessary functions. 
-            // Then show the result in the html
-            if (operator == "plus"){
-                result = parseInt(firstNumber) + parseInt(secondNumber);
-                $("#result").html(result);
-            }
-
-            if (operator == "minus"){
-                result = parseInt(firstNumber) - parseInt(secondNumber);
-                $("#result").html(result);
-            }
-
-            if (operator == "times"){
-                result = parseInt(firstNumber) * parseInt(secondNumber);
-                $("#result").html(result);
-            }
-
-            if (operator == "divide"){
-                result = parseInt(firstNumber) / parseInt(secondNumber);
-                $("#result").html(result);
-            }
-
-            if (operator == "power"){
-                result = Math.pow(parseInt(firstNumber), parseInt(secondNumber));
-                $("#result").html(result);
-            }
-        }
-
-        // If clear is selected then wipe away all of the content from the screen and unlock the buttons.
-        if($(this).hasClass('clear')){
-
-            firstNumber = "";
-            secondNumber = "";
-            operator = "";
-            result = 0;
-            firstNumberComplete = false;
-            lockButtons = false;
-
-            $("#firstNumber").empty();
-            $("#secondNumber").empty();
-            $("#operator").empty();
-            $("#result").empty();
-
-        }
-    })
-
-})
 
 </script>
     
