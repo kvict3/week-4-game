@@ -22,4 +22,13 @@ button{
 .buttons{
 	margin-top: 475px;
 	margin-right: 30px;
+	margin-bottom: 30px;
+}
+#win-loss-tracker{
+	border: .5px solid yellow;
+	width: 85px;
+	float: right;
+	text-align: left;
+	margin-right: 250px;
+	margin-bottom: 30px;
 }
