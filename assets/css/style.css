@@ -18,17 +18,27 @@ button{
 	width:75px;
 	height:75px;
 	cursor: pointer;
+	margin-top: 20px;
 }
-.buttons{
-	margin-top: 475px;
-	margin-right: 30px;
-	margin-bottom: 30px;
+#amethyst{
+	margin-top: 20px;
 }
 #win-loss-tracker{
 	border: .5px solid yellow;
 	width: 85px;
-	float: right;
+	float: left;
 	text-align: left;
-	margin-right: 250px;
+	margin-right: 225px;
 	margin-bottom: 30px;
+}
+#ct{
+	border: .5px solid yellow;
+	float: left;
+	text-align: left;
+	width: 200px;
+}
+#startNumber{
+	border: .5px solid yellow;
+	float: left;
+	text-align: left;
 }
