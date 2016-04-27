@@ -24,6 +24,9 @@ button{
 #first-button{
 	margin-top: 20px;
 }
+#second-button{
+	margin-top: 0px;
+}
 #win-loss-tracker{
 	border: .5px solid yellow;
 	width: 85px;
