@@ -28,17 +28,22 @@ button{
 	width: 85px;
 	float: left;
 	text-align: left;
-	margin-right: 225px;
-	margin-bottom: 30px;
+	margin-left: 425px;
+	margin-top: 75px;
 }
 #ct{
 	border: .5px solid yellow;
 	float: left;
 	text-align: left;
 	width: 200px;
+	margin-left: 425px;
+	margin-top: 50px;
 }
 #startNumber{
 	border: .5px solid yellow;
 	float: left;
 	text-align: left;
+	width: 185px;
+	margin-left: 425px;
+	margin-top: 40px;
 }
